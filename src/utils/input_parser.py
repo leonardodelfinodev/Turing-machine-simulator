@@ -13,7 +13,7 @@ def parse_input_file(file):
     if not Path(file).is_file():
         raise IOError("the file does NOT exist.")
     # check if the tuple is valid (any, any, any, any, > or <) -> ignores if there are any errors in the instructions
-    regexp = re.compile("\(\s?([^\s]+),\s?([^\s]+),\s?([^\s]+),\s?([^\s]+),\s?([<>])\)")
+    regexp = re.compile("\(\s?([^\s]+),\s?([^\s]+),\s?([^\s]+),\s?([^\s]+),\s?([<>-])\)")
     instructions = []
     # every symbol outside the brackets (on same row) will be ignored
     with open(file, "r") as f:
