@@ -1,4 +1,4 @@
-from utils import parse_input as parser
+from utils import input_parser as parser
 
 def main():
     instructions = parser.parse_input_file("../examples/example0.txt")
