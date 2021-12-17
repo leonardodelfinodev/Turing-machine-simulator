@@ -12,7 +12,9 @@ def nonblank_lines(f):
 def parse_input_file(file):
     if not Path(file).is_file():
         raise IOError("the file does NOT exist.")
+
     # check if the tuple is valid (any, any, any, any, > or <) -> ignores if there are any errors in the instructions
+    # TODO: check main.py and fix the regexp
     regexp = re.compile("\(\s?([^\s]+),\s?([^\s]+),\s?([^\s]+),\s?([^\s]+),\s?([<>-])\)")
     instructions = []
     # every symbol outside the brackets (on same row) will be ignored
@@ -21,4 +23,5 @@ def parse_input_file(file):
             if regexp.search(line) is None:
                 raise Exception("the instruction {0} contains an error.".format(line))
             instructions.append([op.lstrip(' ') for op in line[1:-1].split(",")])
+
     return np.array(instructions)
